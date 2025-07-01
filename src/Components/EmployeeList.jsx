@@ -5,6 +5,31 @@ import data from '../data/mockEmployees'
 export default function EmployeeList() {
   const [employeeData, setEmployeeData] = useState(data);
 
+  const handleSort =(keyPath, direction) => {
+    
+        const sortedData = [...employeeData].sort((a,b) => {
+            let aValue = keyPath.split(".").reduce((obj, key) => obj[key], a);
+            let bValue = keyPath.split(".").reduce((obj, key) => obj[key], b);
+
+            if(keyPath === 'jobInfo.hireDate'){
+                aValue = new Date(aValue);
+                bValue = new Date(bValue);
+            }
+
+            return direction === 'asc' ? aValue - bValue : bValue - aValue;
+
+        })
+        setEmployeeData(sortedData);
+    
+  }
+
+  const renderSortButtons = (keyPath) => (
+    <span style={{ marginLeft: "5px", fontSize: "0.9em" }}>
+      <button onClick={() => handleSort(keyPath, 'asc')}>↑</button>
+      <button onClick={() => handleSort(keyPath, 'desc')}>↓</button>
+    </span>
+  );
+
   return (
     <>
     <div className="employee-table-container">
@@ -18,8 +43,8 @@ export default function EmployeeList() {
             <th>Phone</th>
             <th>Department</th>
             <th>Position</th>
-            <th>Salary ($)</th>
-            <th>Hire Date</th>
+            <th >Salary ($) {renderSortButtons("jobInfo.salary")}</th>
+            <th>Hire Date {renderSortButtons("jobInfo.hireDate")}</th>
             <th>Status</th>
           </tr>
         </thead>
