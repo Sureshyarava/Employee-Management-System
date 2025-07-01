@@ -1,224 +1,304 @@
 const data = [
   {
-    "personalInfo": {
-      "firstName": "Alice",
-      "lastName": "Johnson",
-      "email": "alice.johnson@example.com",
-      "phone": "555-123-4567"
-    },
-    "jobInfo": {
-      "department": "Engineering",
-      "position": "Software Engineer",
-      "salary": 85000,
-      "hireDate": "2021-03-15"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/women/1.jpg",
-      "managerId": 1001,
-      "performanceRating": "Excellent"
-    }
+    "id": 1,
+    "firstName": "George",
+    "lastName": "Lam",
+    "email": "francisco66@gmail.com",
+    "phone": "+1-950-872-1088",
+    "department": "Marketing",
+    "position": "Marketing Specialist",
+    "salary": 85217,
+    "hireDate": "2024-09-14",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+    "managerId": 1007,
+    "performanceRating": "Excellent"
   },
   {
-    "personalInfo": {
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "phone": "555-234-5678"
-    },
-    "jobInfo": {
-      "department": "Marketing",
-      "position": "Marketing Specialist",
-      "salary": 65000,
-      "hireDate": "2020-08-22"
-    },
-    "status": {
-      "isActive": false
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/men/2.jpg",
-      "managerId": 1002,
-      "performanceRating": "Good"
-    }
+    "id": 2,
+    "firstName": "Jessica",
+    "lastName": "Fowler",
+    "email": "mdixon@gmail.com",
+    "phone": "185-614-8285",
+    "department": "Finance",
+    "position": "Backend Developer",
+    "salary": 78778,
+    "hireDate": "2021-03-04",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/2.jpg",
+    "managerId": 1008,
+    "performanceRating": "Excellent"
   },
   {
-    "personalInfo": {
-      "firstName": "Clara",
-      "lastName": "Evans",
-      "email": "clara.evans@example.com",
-      "phone": "555-345-6789"
-    },
-    "jobInfo": {
-      "department": "HR",
-      "position": "HR Manager",
-      "salary": 78000,
-      "hireDate": "2019-11-10"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/women/3.jpg",
-      "managerId": 1003,
-      "performanceRating": "Excellent"
-    }
+    "id": 3,
+    "firstName": "Vincent",
+    "lastName": "Taylor",
+    "email": "sarah71@gmail.com",
+    "phone": "+1-130-943-5628",
+    "department": "Engineering",
+    "position": "Marketing Specialist",
+    "salary": 68194,
+    "hireDate": "2023-01-02",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+    "managerId": 1008,
+    "performanceRating": "Excellent"
   },
   {
-    "personalInfo": {
-      "firstName": "David",
-      "lastName": "Lee",
-      "email": "david.lee@example.com",
-      "phone": "555-456-7890"
-    },
-    "jobInfo": {
-      "department": "Engineering",
-      "position": "DevOps Engineer",
-      "salary": 91000,
-      "hireDate": "2022-01-05"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/men/4.jpg",
-      "managerId": 1001,
-      "performanceRating": "Good"
-    }
+    "id": 4,
+    "firstName": "Kimberly",
+    "lastName": "Jacobs",
+    "email": "samanthagilbert@gmail.com",
+    "phone": "327-683-5946",
+    "department": "Support",
+    "position": "Customer Support",
+    "salary": 65482,
+    "hireDate": "2021-06-18",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/4.jpg",
+    "managerId": 1003,
+    "performanceRating": "Good"
   },
   {
-    "personalInfo": {
-      "firstName": "Emma",
-      "lastName": "Clark",
-      "email": "emma.clark@example.com",
-      "phone": "555-567-8901"
-    },
-    "jobInfo": {
-      "department": "Finance",
-      "position": "Accountant",
-      "salary": 72000,
-      "hireDate": "2021-06-30"
-    },
-    "status": {
-      "isActive": false
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/women/5.jpg",
-      "managerId": 1004,
-      "performanceRating": "Satisfactory"
-    }
+    "id": 5,
+    "firstName": "Nathan",
+    "lastName": "Hughes",
+    "email": "hughesnathan@hotmail.com",
+    "phone": "001-593-628-4342",
+    "department": "Engineering",
+    "position": "DevOps Engineer",
+    "salary": 88829,
+    "hireDate": "2022-05-01",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/5.jpg",
+    "managerId": 1005,
+    "performanceRating": "Good"
   },
   {
-    "personalInfo": {
-      "firstName": "Frank",
-      "lastName": "Wright",
-      "email": "frank.wright@example.com",
-      "phone": "555-678-9012"
-    },
-    "jobInfo": {
-      "department": "Sales",
-      "position": "Sales Executive",
-      "salary": 69000,
-      "hireDate": "2020-02-14"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/men/6.jpg",
-      "managerId": 1005,
-      "performanceRating": "Excellent"
-    }
+    "id": 6,
+    "firstName": "Amber",
+    "lastName": "Hernandez",
+    "email": "amber.hernandez@yahoo.com",
+    "phone": "818-335-7270",
+    "department": "Sales",
+    "position": "Sales Executive",
+    "salary": 69217,
+    "hireDate": "2020-07-14",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/6.jpg",
+    "managerId": 1006,
+    "performanceRating": "Satisfactory"
   },
   {
-    "personalInfo": {
-      "firstName": "Grace",
-      "lastName": "Adams",
-      "email": "grace.adams@example.com",
-      "phone": "555-789-0123"
-    },
-    "jobInfo": {
-      "department": "Engineering",
-      "position": "Frontend Developer",
-      "salary": 87000,
-      "hireDate": "2023-04-10"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/women/7.jpg",
-      "managerId": 1001,
-      "performanceRating": "Good"
-    }
+    "id": 7,
+    "firstName": "Lori",
+    "lastName": "Fox",
+    "email": "lorifox@smith.org",
+    "phone": "+1-654-895-0821",
+    "department": "HR",
+    "position": "HR Manager",
+    "salary": 74320,
+    "hireDate": "2024-11-04",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/7.jpg",
+    "managerId": 1007,
+    "performanceRating": "Good"
   },
   {
-    "personalInfo": {
-      "firstName": "Henry",
-      "lastName": "Baker",
-      "email": "henry.baker@example.com",
-      "phone": "555-890-1234"
-    },
-    "jobInfo": {
-      "department": "Support",
-      "position": "Customer Support",
-      "salary": 54000,
-      "hireDate": "2018-09-18"
-    },
-    "status": {
-      "isActive": false
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/men/8.jpg",
-      "managerId": 1006,
-      "performanceRating": "Satisfactory"
-    }
+    "id": 8,
+    "firstName": "Jonathan",
+    "lastName": "Gordon",
+    "email": "jonathangordon@gmail.com",
+    "phone": "349-727-9051",
+    "department": "Engineering",
+    "position": "Frontend Developer",
+    "salary": 96233,
+    "hireDate": "2023-02-26",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/8.jpg",
+    "managerId": 1002,
+    "performanceRating": "Excellent"
   },
   {
-    "personalInfo": {
-      "firstName": "Ivy",
-      "lastName": "Nelson",
-      "email": "ivy.nelson@example.com",
-      "phone": "555-901-2345"
-    },
-    "jobInfo": {
-      "department": "Design",
-      "position": "UX Designer",
-      "salary": 80000,
-      "hireDate": "2020-12-01"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/women/9.jpg",
-      "managerId": 1007,
-      "performanceRating": "Excellent"
-    }
+    "id": 9,
+    "firstName": "Melissa",
+    "lastName": "Holt",
+    "email": "melissaholt@young.biz",
+    "phone": "902.233.4204",
+    "department": "Design",
+    "position": "UX Designer",
+    "salary": 85472,
+    "hireDate": "2025-01-10",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/9.jpg",
+    "managerId": 1003,
+    "performanceRating": "Satisfactory"
   },
   {
-    "personalInfo": {
-      "firstName": "Jack",
-      "lastName": "Turner",
-      "email": "jack.turner@example.com",
-      "phone": "555-012-3456"
-    },
-    "jobInfo": {
-      "department": "Engineering",
-      "position": "Backend Developer",
-      "salary": 90000,
-      "hireDate": "2022-10-15"
-    },
-    "status": {
-      "isActive": true
-    },
-    "additional": {
-      "profilePicUrl": "https://randomuser.me/api/portraits/men/10.jpg",
-      "managerId": 1001,
-      "performanceRating": "Good"
-    }
+    "id": 10,
+    "firstName": "Bradley",
+    "lastName": "Murray",
+    "email": "murraybradley@wright.net",
+    "phone": "367-814-3385",
+    "department": "Engineering",
+    "position": "Backend Developer",
+    "salary": 79840,
+    "hireDate": "2023-12-03",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/10.jpg",
+    "managerId": 1004,
+    "performanceRating": "Good"
+  },
+  {
+    "id": 11,
+    "firstName": "Lindsey",
+    "lastName": "Fleming",
+    "email": "lfleming@hansen.net",
+    "phone": "118.545.9174",
+    "department": "Marketing",
+    "position": "Marketing Specialist",
+    "salary": 70485,
+    "hireDate": "2020-03-28",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/11.jpg",
+    "managerId": 1006,
+    "performanceRating": "Satisfactory"
+  },
+  {
+    "id": 12,
+    "firstName": "Scott",
+    "lastName": "Owens",
+    "email": "scott.owens@brown.com",
+    "phone": "736-771-5127",
+    "department": "Support",
+    "position": "Customer Support",
+    "salary": 54811,
+    "hireDate": "2024-06-06",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/12.jpg",
+    "managerId": 1004,
+    "performanceRating": "Excellent"
+  },
+  {
+    "id": 13,
+    "firstName": "Ashley",
+    "lastName": "Cole",
+    "email": "coleashley@gmail.com",
+    "phone": "001-832-741-9307",
+    "department": "Engineering",
+    "position": "Software Engineer",
+    "salary": 83470,
+    "hireDate": "2023-11-01",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/13.jpg",
+    "managerId": 1003,
+    "performanceRating": "Good"
+  },
+  {
+    "id": 14,
+    "firstName": "Jordan",
+    "lastName": "Nguyen",
+    "email": "jordan.nguyen@smith.com",
+    "phone": "552.792.8824",
+    "department": "HR",
+    "position": "HR Manager",
+    "salary": 90001,
+    "hireDate": "2022-08-29",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/14.jpg",
+    "managerId": 1008,
+    "performanceRating": "Good"
+  },
+  {
+    "id": 15,
+    "firstName": "Rebecca",
+    "lastName": "Evans",
+    "email": "rebeccae@hall.org",
+    "phone": "669-134-1871",
+    "department": "Engineering",
+    "position": "DevOps Engineer",
+    "salary": 94712,
+    "hireDate": "2023-05-07",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/15.jpg",
+    "managerId": 1007,
+    "performanceRating": "Satisfactory"
+  },
+  {
+    "id": 16,
+    "firstName": "Ethan",
+    "lastName": "Shaw",
+    "email": "shaw.ethan@murphy.net",
+    "phone": "352.331.0978",
+    "department": "Design",
+    "position": "UX Designer",
+    "salary": 73884,
+    "hireDate": "2024-01-31",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/16.jpg",
+    "managerId": 1006,
+    "performanceRating": "Excellent"
+  },
+  {
+    "id": 17,
+    "firstName": "Donna",
+    "lastName": "Mendoza",
+    "email": "donna.mendoza@gmail.com",
+    "phone": "987-298-1440",
+    "department": "Marketing",
+    "position": "Marketing Specialist",
+    "salary": 87215,
+    "hireDate": "2025-06-28",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+    "managerId": 1002,
+    "performanceRating": "Excellent"
+  },
+  {
+    "id": 18,
+    "firstName": "Daniel",
+    "lastName": "Palmer",
+    "email": "daniel.palmer@lee.io",
+    "phone": "202.661.0991",
+    "department": "Sales",
+    "position": "Sales Executive",
+    "salary": 78113,
+    "hireDate": "2023-07-17",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/18.jpg",
+    "managerId": 1003,
+    "performanceRating": "Satisfactory"
+  },
+  {
+    "id": 19,
+    "firstName": "Maria",
+    "lastName": "Wheeler",
+    "email": "mwheeler@gmail.com",
+    "phone": "001-745-836-1140",
+    "department": "Engineering",
+    "position": "Frontend Developer",
+    "salary": 91450,
+    "hireDate": "2021-09-25",
+    "isActive": false,
+    "profilePicUrl": "https://randomuser.me/api/portraits/women/19.jpg",
+    "managerId": 1006,
+    "performanceRating": "Excellent"
+  },
+  {
+    "id": 20,
+    "firstName": "James",
+    "lastName": "King",
+    "email": "allenjulie@clark-williams.info",
+    "phone": "553.309.5778",
+    "department": "Engineering",
+    "position": "Software Engineer",
+    "salary": 77943,
+    "hireDate": "2020-11-14",
+    "isActive": true,
+    "profilePicUrl": "https://randomuser.me/api/portraits/men/20.jpg",
+    "managerId": 1002,
+    "performanceRating": "Good"
   }
-]
+];
 
 export default data;

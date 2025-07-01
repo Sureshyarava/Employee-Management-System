@@ -1,13 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import EmployeeList from './Components/EmployeeList'
+import EmployeeList from './Components/EmployeeList/EmployeeList.jsx'
+
+import data from './data/mockEmployees.js'
 
 function App() {
-  return(
+
+  const [employeeData, setEmployeeData] = useState(data);
+
+  const handleAddEmployee = (newEmp) => {
+    setEmployeeData([newEmp, ...employeeData]);
+  };
+
+
+  return (
     <>
-    <EmployeeList />
+      <EmployeeList employees={employeeData} onAdd={handleAddEmployee}/>
     </>
   )
 }

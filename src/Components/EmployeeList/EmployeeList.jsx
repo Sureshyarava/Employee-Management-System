@@ -1,0 +1,83 @@
+import React, { useState } from "react";
+import EmployeeCard from "../EmployeeCard/EmployeeCard";
+import SearchBar from "../SearchBar/SearchBar";
+import EmployeeForm from "../EmployeeForm/EmployeeForm";
+
+export default function EmployeeList({ employees, onAdd }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showForm, setShowForm] = useState(false);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const filteredEmployees = () => {
+    const lowerQuery = searchQuery.toLowerCase();
+    return employees.filter((emp) =>
+      Object.values(emp).some((val) =>
+        typeof val === "string" || typeof val === "number"
+          ? val.toString().toLowerCase().includes(lowerQuery)
+          : false
+      )
+    );
+  };
+
+  const totalPages = Math.ceil(filteredEmployees().length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const currentEmployees = filteredEmployees().slice(
+    indexOfLastItem - itemsPerPage,
+    indexOfLastItem
+  );
+
+  return (
+    <div className="employee-list-container">
+      <div className="header-bar">
+        <h1 className="heading">Employee Management System</h1>
+        {!showForm && (
+          <button className="addEmployee" onClick={() => setShowForm(true)}>
+            ➕ Add Employee
+          </button>
+        )}
+      </div>
+
+      {showForm ? (
+        <EmployeeForm onAdd={onAdd} onClose={() => setShowForm(false)} />
+      ) : (
+        <>
+          <SearchBar searchQuery={searchQuery} onSearch={handleSearch} />
+
+          <div className="grid-employees">
+            {currentEmployees.map((employee, index) => (
+              <EmployeeCard employee={employee} key={index} />
+            ))}
+          </div>
+
+          <div className="pagination" style={{ marginTop: "20px", textAlign: "center" }}>
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
+
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
+              }
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
