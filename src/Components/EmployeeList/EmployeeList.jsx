@@ -10,6 +10,7 @@ export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [selectedDept, setSelectedDept] = useState("");
+  const [editingEmployee, setEditingEmployee] = useState(null);
 
   const departmentOptions = [...new Set(employees.map(emp => emp.department))];
 
@@ -43,14 +44,25 @@ export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
       <div className="header-bar">
         <h1 className="heading">Employee Management System</h1>
         {!showForm && (
-          <button className="addEmployee" onClick={() => setShowForm(true)}>
+          <button className="addEmployee" onClick={() => {
+                setShowForm(true);
+                setEditingEmployee(null);
+              }}>
             ➕ Add Employee
           </button>
         )}
       </div>
 
       {showForm ? (
-        <EmployeeForm onAdd={onAdd} onClose={() => setShowForm(false)} />
+        <EmployeeForm
+          onAdd={onAdd}
+          onEdit={onEdit}
+          editingEmployee={editingEmployee}
+          onClose={() => {
+          setShowForm(false);
+          setEditingEmployee(false);
+    }}
+  />
       ) : (
         <>
           <div className="searchContainer">
@@ -60,7 +72,10 @@ export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
 
           <div className="grid-employees">
             {currentEmployees.map((employee, index) => (
-              <EmployeeCard employee={employee} key={index} onEdit={onEdit} onDelete={onDelete}/>
+              <EmployeeCard employee={employee} key={index} onEdit={() => {
+                  setEditingEmployee(employee);
+                  setShowForm(true);
+                }} onDelete={onDelete}/>
             ))}
           </div>
 

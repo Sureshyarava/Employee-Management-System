@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 
-export default function EmployeeForm({ onAdd, onClose }) {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    department: "",
-    position: "",
-    salary: "",
-    hireDate: "",
-    profilePicUrl: "",
-    isActive: true,
-    performanceRating: "",
-    managerId: ""
-  });
+export default function EmployeeForm({ onAdd, onEdit, editingEmployee, onClose }) {
 
+  const isEditMode = editingEmployee;
+
+  const [formData, setFormData] = useState(() => {
+    if (editingEmployee) {
+      return { ...editingEmployee };
+    }
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      department: "",
+      position: "",
+      salary: "",
+      hireDate: "",
+      profilePicUrl: "",
+      isActive: true,
+      performanceRating: "",
+      managerId: ""
+    };
+  });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -23,19 +30,25 @@ export default function EmployeeForm({ onAdd, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd({
+    const employeePayload = {
       ...formData,
-      id: Date.now(), 
       salary: parseFloat(formData.salary),
-      isActive: formData.isActive === "true", 
-      managerId: parseInt(formData.managerId)
-    });
+      isActive: formData.isActive === "true" || formData.isActive === true,
+      managerId: parseInt(formData.managerId),
+    };
+
+    if (isEditMode) {
+      onEdit(employeePayload);
+    } else {
+      onAdd({ ...employeePayload, id: Date.now() });
+    }
+
     onClose();
   };
 
   return (
     <form onSubmit={handleSubmit} className="employee-form">
-      <h2>Add New Employee</h2>
+      <h2>{isEditMode ? "Edit Employee" : "Add New Employee"}</h2>
       {Object.keys(formData).map((key) => (
         key !== "isActive" ? (
           <input
