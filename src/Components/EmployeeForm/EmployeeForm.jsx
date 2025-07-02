@@ -58,8 +58,10 @@ export default function EmployeeForm({ onAdd, onClose }) {
           </select>
         )
       ))}
+    <div className="formFooter">
       <button type="submit">Submit</button>
       <button type="button" onClick={onClose}>Cancel</button>
+      </div>
     </form>
   );
 }

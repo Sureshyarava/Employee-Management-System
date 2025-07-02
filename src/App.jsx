@@ -12,10 +12,21 @@ function App() {
     setEmployeeData([newEmp, ...employeeData]);
   };
 
+  const handleEditEmployee = (updatedEmp) => {
+    setEmployeeData((prev) =>
+      prev.map((emp) => (emp.id === updatedEmp.id ? updatedEmp : emp))
+    );
+  };
+
+  const handleDeleteEmployee = (id) => {
+    setEmployeeData((prev) => prev.filter((emp) => emp.id !== id));
+  };
+
+
 
   return (
     <>
-      <EmployeeList employees={employeeData} onAdd={handleAddEmployee}/>
+      <EmployeeList employees={employeeData} onAdd={handleAddEmployee} onEdit={handleEditEmployee} onDelete={handleDeleteEmployee}/>
     </>
   )
 }

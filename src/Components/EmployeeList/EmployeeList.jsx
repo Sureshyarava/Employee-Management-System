@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import SearchBar from "../SearchBar/SearchBar";
 import EmployeeForm from "../EmployeeForm/EmployeeForm";
+import DepartmentFilter from "../DepartmentFilter/DepartmentFilter";
 
-export default function EmployeeList({ employees, onAdd }) {
+export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [selectedDept, setSelectedDept] = useState("");
+
+  const departmentOptions = [...new Set(employees.map(emp => emp.department))];
+
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -21,7 +26,8 @@ export default function EmployeeList({ employees, onAdd }) {
         typeof val === "string" || typeof val === "number"
           ? val.toString().toLowerCase().includes(lowerQuery)
           : false
-      )
+      )).filter((emp) =>
+      selectedDept ? emp.department === selectedDept : true
     );
   };
 
@@ -47,11 +53,14 @@ export default function EmployeeList({ employees, onAdd }) {
         <EmployeeForm onAdd={onAdd} onClose={() => setShowForm(false)} />
       ) : (
         <>
+          <div className="searchContainer">
           <SearchBar searchQuery={searchQuery} onSearch={handleSearch} />
+          <DepartmentFilter departments={departmentOptions} selectedDept={selectedDept} onSelect={setSelectedDept} />
+          </div>
 
           <div className="grid-employees">
             {currentEmployees.map((employee, index) => (
-              <EmployeeCard employee={employee} key={index} />
+              <EmployeeCard employee={employee} key={index} onEdit={onEdit} onDelete={onDelete}/>
             ))}
           </div>
 
