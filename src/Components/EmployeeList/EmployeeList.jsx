@@ -3,17 +3,18 @@ import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import SearchBar from "../SearchBar/SearchBar";
 import EmployeeForm from "../EmployeeForm/EmployeeForm";
 import DepartmentFilter from "../DepartmentFilter/DepartmentFilter";
+import { useNavigate } from "react-router-dom";
 
 export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [selectedDept, setSelectedDept] = useState("");
   const [editingEmployee, setEditingEmployee] = useState(null);
   const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
-
   const departmentOptions = [...new Set(employees.map(emp => emp.department))];
 
   const handleSearch = (query) => {
@@ -44,6 +45,7 @@ export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
   };
 }, [showForm]);
 
+
   const filteredEmployees = () => {
     const lowerQuery = searchQuery.toLowerCase();
 
@@ -56,6 +58,11 @@ export default function EmployeeList({ employees, onAdd, onEdit, onDelete }) {
     ).filter((emp) =>
       selectedDept ? emp.department === selectedDept : true
     );
+
+    if(result.length==0){
+      navigate("/employeNotFound");
+    }
+
 
     if (sortField) {
       result.sort((a, b) => {

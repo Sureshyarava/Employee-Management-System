@@ -5,6 +5,7 @@ import './styles/App.css';
 import EmployeeList from './Components/EmployeeList/EmployeeList.jsx';
 import StatisticsPage from './Components/Statistics/Statistics.jsx'; // You’ll create this
 import data from './data/mockEmployees.js';
+import EmployeeNotFound from './Components/EmployeeNotFound/EmployeeNotFound.jsx';
 
 function App() {
   const [employeeData, setEmployeeData] = useState(data);
@@ -42,6 +43,8 @@ function App() {
             />
           }
         />
+
+        <Route path="/employeNotFound" element={<EmployeeNotFound />} />
         <Route
           path="/statistics"
           element={<StatisticsPage employees={employeeData} />}
